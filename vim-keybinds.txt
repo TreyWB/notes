@@ -1,0 +1,124 @@
+	Vim Default Keybinds
+
+Config Location: ~/.vimrc
+
+---Help---
+Open VIM manual in Vim - vimtutor
+Vim Learning Game - https://vim-adventures.com
+
+
+
+---Most Important---
+*First character of line - 0
+*Move up/down in document in batches - { / }
+
+*Delete from cursor to end of line - D / d + $
+*Delete current character (put in Insert) - s
+*Delete current line (put in Insert) - S
+
+*Change current word - c + e
+
+*Move to next character (puts in Insert) - a
+*Move to last character of line (puts in Insert) - A
+ 
+*Adds line below (puts in Insert) - o
+*Adds line above (puts in Insert) - O
+
+*Replace instances in entire doc. - :%s/oldstring/newstring/g
+
+
+
+---Basic Moving---
+Move Left - h
+Move Down - j
+Move Up - k
+Move Right - l
+
+---Close Vim---
+1 - :q / :wq / :q! (quit without saving)
+2 - :exit / :x
+3 - ZZ
+
+---Moving Through Document---
+Top of document - gg
+Last line of document - G
+
+---Moving Through Lines---
+First character of line - 0
+Second to the last character of line - $ 
+First character of line number - 12G
+
+---Moving Through Words---
+Next word (first character) - w
+Next word (last character) - e
+Next word (fc & skip puncutation) - W
+Previous word (last character) - b
+Previous word (lc & skip puncutation) - W
+Multiple words - 12w / 12e / 12b
+
+---Deleting---
+Delete one character - x
+Delete mutliple characters - 12x
+
+Delete word - dw
+Delete multiple words - 12dw
+
+Delete a line - dd
+Delete multiple lines - 12dd
+
+Delete from cursor to end of line - D / d + $
+
+---Undo / Redo---
+Undo one change - u
+Undo two changes - uu
+Undo multiple changes - 12u
+
+Redo one change - Ctrl + r
+
+---Paste---
+Paste deleted lines (dd) - p
+
+---Copying / Yanking---
+Copy word - y + w
+Copies an entire line - yy
+Copies from cursor to end of line - y + $
+
+---Replace / Change---
+Replace current character - r + [new character]
+
+Change current word - c + e
+Delete from cursor to end of line (put in Insert) - C / c + $
+
+---Forward to/until---
+Move forward to next occurence of [character] - f + [character] (case matters)
+Move backward to next occurence of [character] - F + [character] (case matters)
+
+Move forward until next occurence of [character] - t + [character] (case matters)
+Move backward until next occurence of [character] - T + [character] (case matters)
+
+---Insert Mode Hacks---
+Delete current character (put in Insert) - s
+Delete current line (put in Insert) - S
+
+Move to next character (puts in Insert) - a
+Move to last character of line (puts in Insert) - A
+
+Adds line below (puts in Insert) - o
+Adds line above (puts in Insert) - O
+
+---Search---
+Search backward - ?
+Search forward - /
+Next match in search - n
+Previous match in search - N
+
+---Search & Replace---
+Replace instances in entire doc. - :%s/oldstring/newstring/g
+Replace instances in specific lines - :3,9s/oldstring/newstring/g
+Replace instances in entire doc. (with y/n prompt) - :%s/oldstring/newstring/gc
+i.e. :%s/trey/dumbfuck/g
+
+---Commands---
+Execute bash commands in vim - :!pwd or :!id
+List potential vim autocomplete commands - :[beginning of command] + Ctrl + D
+i.e. :w + Ctrl + D will list write, wall, winsize, etc.

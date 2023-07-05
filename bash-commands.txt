@@ -1,0 +1,161 @@
+Bash Commands
+
+USE https://explainshell.com/ FOR BREAKDOWN & EXPLAINATION OF SPECIFIC COMMANDS
+
+----------------------------------------------------------------------------
+Bash Shortcuts
+
+Ctrl + A | Move cursor to beginning of prompt
+Ctrl + E | Move cursor to end of prompt
+
+Ctrl + U | Erase from cursor to beginning of line
+Ctrl + K | Erase from cursor to end of line
+Ctrl + W | Erase word preceeding cursor
+
+---ls---
+ls -l = ls with listed format
+ls -RAl = List recursively w/ hidden folders
+ls -lt = sorts ls by time/date modified
+ls -Xl = Groups by filetypes
+lsof = List open files
+
+---Copy---
+cp [filename] [path] = copies file from current location to the path specified
+cp -r [filename] [path] = recursively copies file from current location to the path specified
+
+---Edit File Permissions---
+chmod u+x [filename] = Adds 'execute' permission to user for specific file
+chmod g+r [filename] = Adds 'read' permission to group for specific file
+chmod o+w [filename] = Adds 'write' permission to other for specfifc file
+chmod +x [filename] = Adds 'execute' permission to all columns/groups for specific file
+
+ls -l = ls that shows permissions for files in current location
+sudo ./[filename] = Executes file in current location
+
+---Tar---
+tar -tvf [filename.tar] = Lists all files in specific .tar archive
+tar -xvzf [filename.tar] = Extracts all files from archive to current location, organized in folder
+tar -xvzf [filename.tar] -C /path/here/ = Extracts all files from archive to /path/selected, organized in folder
+
+---Search---
+Ctrl + r = Recursively search commands previously ran
+Alt + . = Cycle through argument history
+
+---Find---
+find / -type f -name *.conf -user root -perm 4000 -size +20k -newermt 2020-03-03 -exec ls -al {} \; 2>/dev/null
+
+-type f	            | The type of the searched object. In this case, 'f' stands for 'file'
+-name *.conf        | The name of the file we are looking for
+-user root          | Filters all files whose owner is the root user.
+-perm 4000	    | Filter by exact permissions
+-perm -4000         | Filter by minimum permission (show files with AT LEAST these permissions)
+-perm /4000	    | Filter by permissions for either owner or group
+-size +20k          | Filter all the files and only show files larger than 20 KiB
+-newermt 2020-03-03 | Filter by files that are newer than the specified date
+2>/dev/null         | Errors won't be displayed in terminal, instead sent to null device (void)
+
+---Awk---
+cat /etc/passwd | awk -F ':' '{print $1, $NF}'
+
+-F ':'	      | Declares ':' as the field separator
+'{print $1}'  | Prints %n column, split by field separator
+$NF	      | Last column
+
+---Sed---
+cat /etc/passwd | sed 's/bin/HTB/g'
+
+sed 	   | Flag to replace word with another word
+'s/'	   | Subsitute command
+'bin/htb'  | Terms to replace: word1/word2
+'/g'	   | Flag to replace all matches
+
+---Cut---
+cat /etc/passwd | cut -d":" -f1
+
+-d 	| Delimeter
+-f1	| Field to output
+
+---Regex---
+grep -E "(my|false)" /etc/passwd
+
+-E 	     | Extended regex flag (needed for '|' OR & '.*' AND operators)
+"(my)"       | Display results containing the word 'my'
+"(my|false)" | Displays results containing words 'my' or 'false'
+
+Operators
+(a) 	     | Round brackets are used to find patterns / words
+[a-z]	     | Square brackets are used to specify a list of characters to find
+{1-9}	     | Curly brackets define quantifiers, find a number or range
+'|'	     | OR Operator: Shows results when one of the two expressions match
+'&'	     | AND Operator: Only shows results when both expressions match
+
+---Systemctl---
+systemctl status ssh
+
+systemctl show <unit> --property=Type 
+
+systemctl    | (With no arguments) Lists all services 
+start	     | Starts process
+status	     | Display details about running process
+stop 	     | Stops process
+enable       | Adds service to SysV script (Automatically runs service at startup)
+ssh	     | Process name
+
+show            | Displays information about unit
+--property=Type | Filters output about unit by the specified property 
+
+[USE ps -ef TO VIEW ALL RUNNING PROCESSES, DISPLAYS PIDs AS WELL]
+
+---PS---
+ps -ef	     | Displays processes (running under both root and user), with full format listing
+ps -euf      | Displays processes (only shows user processes), with CPU & MEM usage
+ps -aux      | Combines -ef & -euf (both root and user processes), with usage stats & status
+
+---Journalctl---
+journalctl -u ssh.service --no-pager
+
+journalctl   | (With no flags) Shows all service logs
+-u 	     | Shows logs from specific unit (service)
+ssh.service  | Unit (service) name [must end in .service]
+--no-pager   | Do not pipe output to pager
+
+---Killing Processes---
+kill <status_code_number> <PID>
+
+kill -l      | Lists signal names
+
+Signals:
+1 - SIGHUP   | Signal sent when the terminal that controls the process is closed 
+2 - SIGINT   | Sent when Ctrl + C is pressed in controlling terminal to INTERRUPT process
+3 - SIGQUIT  | Sent when user presses Ctrl + D
+9 - SIGKILL  | Immediately kill a process with no clean-up operations
+15 - SIGTERM | Program termination
+19 - SIGSTOP | Stop the program. It cannot be handled anymore
+20 - SIGSTP  | When Ctrl + Z is pressed; requests service to suspend. Can handle it afterwards
+
+---Backgrounding & Foregrounding---
+
+Background:
+Ctrl + Z     | Suspends process (process will not be executed further)
+bg	     | Backgrounds a process (process will continue running)
+
+Foreground:
+jobs         | Displays all background processes
+fg <PID>     | Foregrounds a background process, so it will be interactable again
+
+------------------------------------------------------------------------
+HackTheBox Useful Bash Commands
+
+id	 | Returns user's identity
+hostname | Sets or prints the name of current host system
+ifconfig | The ifconfig utility is used to assign or view an address to a network interface and/or 	     configure network interface parameters 
+sudo -l  | Lists sudo capabilities of user
+netstat	 | Shows network status
+ss	 | Another utility to investigate sockets
+ps	 | Shows process status
+who	 | Displays who is logged in
+lsblk 	 | Lists block devices
+lsusb	 | Lists USB devices
+lsof	 | Lists opened files
+lspci	 | Lists PCI devices
+

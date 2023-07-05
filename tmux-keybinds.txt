@@ -1,0 +1,48 @@
+Tmux Default Keybinds
+
+Config Location: ~/.tmux
+
+---Prefix Key---
+Ctrl + b
+
+---Help---
+Prefix + ?    |  List of all keybinds
+
+---Tmux Commands---
+Create Session: tmux new -s [session name]
+Attach Session: tmux attach -t [session name]
+Detach current: Prefix + d 
+List Sessions: tmux list-sessions
+
+---Window Controls---
+Prefix + c    | Create window
+Prefix + ,    | Rename window
+Prefix + &    | Kill current window
+
+Prefix + 2    | Switch to window (using window number)
+Prefix + p    | Previous window [Switch to]
+Prefix + n    | Next window [Switch to]
+
+---Pane Controls---
+Prefix + '+'              | Vertical Split
+Prefix + "                | Horizontal Split
+
+Prefix + x                | Kill active pane (Tmux)
+Ctrl + D		  | Kill current pane (Bash exit session)
+
+Prefix + ;                | Previous active pane [switch to]
+Prefix + arrow            | Switch Panes
+Prefix + a Ctrl + [arrow] | Reize Pane
+Prefix + z                | Fullscreen Pane
+
+Prefix + spacebar         | Switch Pane Layout
+
+---Scrolling & Copying---
+Prefix + [    | Enter copy / visual mode
+Ctrl + Space  | While in copy mode, enter visual mode
+Ctrl + W      | While in copy mode, copy selected text to buffer
+
+Prefix + ]    | Paste most recent text in buffer
+Prefix + =    | Choose text from paste buffer
+
+Shift + ?     | Search up (MUST BE IN COPY MODE)

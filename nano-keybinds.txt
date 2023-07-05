@@ -1,0 +1,6 @@
+Nano Keybindings
+
+Ctrl + O = Save file
+Ctrl + X = Exit Nano
+Ctrl + W = Search for term
+Ctrl + W + Enter = Next matching search term

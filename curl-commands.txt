@@ -1,0 +1,28 @@
+Curl Cheatsheet
+
+Usage:
+curl -X POST -i -O http://google.com
+
+-X	| Switch request method
+-L	| Follow redirects
+-k	| Skip certification check
+
+---Output---
+-v	| Verbose; output full request & response (> request headers < response headers)
+-vvv    | Very verbose
+-s	| (Silence) Only display response body 
+
+-i      | Include response headers in output
+-I	| Only show response headers (send HEAD request)
+
+-o	| Write output to file (need to specify new file name)
+-O 	| Download file (use name of remote file)
+
+---GET Data---
+-H	| Pass custom request headers
+-A	| Set custom User-Agent
+-u	| Provide username:password
+
+---POST Data---
+-d	| Data sent in POST request body
+-b	| Send cookie
